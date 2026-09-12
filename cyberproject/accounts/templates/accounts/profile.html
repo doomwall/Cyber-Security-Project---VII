@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block title %}Profile{% endblock %}
+
+{% block content %}
+    <h1>Profile</h1>
+
+    {% if saved %}
+        <p>Profile saved.</p>
+    {% endif %}
+
+    {% if form.errors %}
+        <p>Please fix the following:</p>
+        {{ form.errors }}
+    {% endif %}
+
+    <p>
+        Username: <strong>{{ user.username }}</strong><br>
+        Staff status: <strong>{{ user.is_staff }}</strong>
+    </p>
+
+    <form method="post">
+        {% csrf_token %}
+        <p>
+            <label for="first_name">First name</label><br>
+            <input type="text" id="first_name" name="first_name" value="{{ user.first_name }}">
+        </p>
+        <p>
+            <label for="last_name">Last name</label><br>
+            <input type="text" id="last_name" name="last_name" value="{{ user.last_name }}">
+        </p>
+        <p>
+            <label for="email">Email</label><br>
+            <input type="email" id="email" name="email" value="{{ user.email }}">
+        </p>
+        <button type="submit">Save</button>
+    </form>
+{% endblock %}

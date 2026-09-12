@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block title %}Admin panel{% endblock %}
+
+{% block content %}
+    <h1>Admin panel</h1>
+
+    <h2>All users</h2>
+    <table border="1" cellpadding="4">
+        <tr>
+            <th>id</th><th>username</th><th>email</th><th>staff</th><th>superuser</th>
+        </tr>
+        {% for u in users %}
+            <tr>
+                <td>{{ u.id }}</td>
+                <td>{{ u.username }}</td>
+                <td>{{ u.email }}</td>
+                <td>{{ u.is_staff }}</td>
+                <td>{{ u.is_superuser }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+
+    <h2>All notes</h2>
+    <table border="1" cellpadding="4">
+        <tr>
+            <th>id</th><th>owner</th><th>title</th>
+        </tr>
+        {% for note in notes %}
+            <tr>
+                <td>{{ note.id }}</td>
+                <td>{{ note.owner.username }}</td>
+                <td>{{ note.title }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+{% endblock %}

@@ -1,15 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="utf-8">
-    <title>Home</title>
-</head>
-<body>
+{% extends "base.html" %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
     <h1>Welcome, {{ user.username }}</h1>
     <p>You are logged in.</p>
-    <form method="post" action="{% url 'logout' %}">
-        {% csrf_token %}
-        <button type="submit">Log out</button>
-    </form>
-</body>
-</html>
+
+    <ul>
+        <li><a href="{% url 'note_list' %}">My notes</a></li>
+        <li><a href="{% url 'profile' %}">My profile</a></li>
+    </ul>
+{% endblock %}

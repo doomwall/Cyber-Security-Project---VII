@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>{% block title %}Notes{% endblock %}</title>
+</head>
+<body>
+
+{% if user.is_authenticated %}
+    <nav>
+        <a href="{% url 'home' %}">Home</a> |
+        <a href="{% url 'note_list' %}">My notes</a> |
+        <a href="{% url 'profile' %}">Profile</a>
+        {% if user.is_staff %}
+            | <a href="{% url 'admin_panel' %}">Admin panel</a>
+        {% endif %}
+        | logged in as <strong>{{ user.username }}</strong>
+        <form method="post" action="{% url 'logout' %}" style="display:inline">
+            {% csrf_token %}
+            <button type="submit">Log out</button>
+        </form>
+    </nav>
+    <hr>
+{% endif %}
+
+{% block content %}{% endblock %}
+
+</body>
+</html>
