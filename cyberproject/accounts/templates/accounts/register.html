@@ -1,12 +1,16 @@
 {% extends "base.html" %}
 
-{% block title %}Login{% endblock %}
+{% block title %}Register{% endblock %}
 
 {% block content %}
-    <h1>Login</h1>
+    <h1>Create an account</h1>
 
-    {% if error %}
-        <p>{{ error }}</p>
+    {% if errors %}
+        <ul>
+            {% for error in errors %}
+                <li>{{ error }}</li>
+            {% endfor %}
+        </ul>
     {% endif %}
 
     <form method="post">
@@ -19,8 +23,8 @@
             <label for="password">Password</label><br>
             <input type="password" id="password" name="password">
         </p>
-        <button type="submit">Log in</button>
+        <button type="submit">Register</button>
     </form>
 
-    <p><a href="{% url 'register' %}">Create an account</a></p>
+    <p><a href="{% url 'login' %}">Already have an account? Log in</a></p>
 {% endblock %}

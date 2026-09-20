@@ -54,6 +54,9 @@ class Command(BaseCommand):
             state = 'created' if created else 'reset'
             self.stdout.write(f'{state}: {username} (staff={is_staff})')
 
+        # Re-running this command re-hashes every demo password with whichever
+        # hasher is currently active in settings.PASSWORD_HASHERS, which is how
+        # the cryptography flaw can be toggled without breaking login.
         self.stdout.write(self.style.SUCCESS(
             f'\nDone. All demo users have the password: {PASSWORD}'
         ))
