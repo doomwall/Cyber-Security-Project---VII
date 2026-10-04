@@ -1,5 +1,3 @@
-"""Password hashers.
-
 ###################################################################
 # FLAW 2 -- Cryptographic Failures
 #
@@ -17,7 +15,6 @@
 # SECURE version, then restart with the run script so the existing
 # users are re-hashed with the strong algorithm.
 ###################################################################
-"""
 
 import hashlib
 
