@@ -15,8 +15,6 @@ security_logger = logging.getLogger('security')
 
 
 def register_view(request):
-    """Create a new account.
-
     ###################################################################
     # FLAW 4 -- Identification and Authentication Failures
     #           Weak password requirements
@@ -32,7 +30,7 @@ def register_view(request):
     # To repair the app: comment out the VULNERABLE block and uncomment
     # the SECURE block.
     ###################################################################
-    """
+    
     errors = []
 
     if request.user.is_authenticated:

@@ -44,8 +44,6 @@ def note_detail(request, note_id):
 
 @login_required
 def note_create(request):
-    """Create a note owned by the logged-in user.
-
     ###################################################################
     # FLAW 3 -- Injection
     #           SQL injection
@@ -61,7 +59,7 @@ def note_create(request):
     # the SECURE block. The ORM sends the values as bound parameters, so
     # they can only ever be stored as text.
     ###################################################################
-    """
+
     error = None
 
     if request.method == 'POST':
