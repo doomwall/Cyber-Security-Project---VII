@@ -4,8 +4,8 @@
 # The hasher below stores passwords as a single round of unsalted MD5.
 # MD5 is a deprecated hash function designed to be FAST, which is the
 # opposite of what password storage needs, and without a salt two users
-# with the same password get byte-identical hashes -- so a leaked
-# database can be cracked with a public rainbow table in seconds.
+# with the same password get byte-identical hashes, so a leaked
+# database can be cracked easily.
 #
 # Django 5 no longer ships an unsalted MD5 hasher (it was removed in
 # 5.1 precisely because it is unsafe), so it is implemented here by

@@ -70,24 +70,20 @@ DATABASES = {
 }
 
 
-# Password hashing
-#
 ###################################################################
 # FLAW 2 -- Cryptographic Failures
 #           (see accounts/hashers.py for the full explanation)
 #
 # The first entry of PASSWORD_HASHERS is the algorithm used to hash
 # every new or changed password. Pointing it at a home-made unsalted
-# MD5 hasher means the whole user table is crackable with a public
-# rainbow table.
+# MD5 hasher means the whole user table is crackable.
 #
 # To repair the app: comment out the VULNERABLE block and uncomment
 # the SECURE block, then restart with ./run.sh (or .\run.ps1), which
 # rebuilds the database so every password is re-hashed properly.
 ###################################################################
 
-# --- SECURE version: Django's default. PBKDF2-SHA256 with a per-user
-# --- random salt and ~1 000 000 iterations of deliberate slowness.
+# --- SECURE version: Django's default.
 # PASSWORD_HASHERS = [
 #     'django.contrib.auth.hashers.PBKDF2PasswordHasher',
 #     'django.contrib.auth.hashers.PBKDF2SHA1PasswordHasher',

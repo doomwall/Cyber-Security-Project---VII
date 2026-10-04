@@ -42,8 +42,7 @@ def note_detail(request, note_id):
 @login_required
 def note_create(request):
     ###################################################################
-    # FLAW 3 -- Injection
-    #           SQL injection
+    # FLAW 3 -- Injection: SQL injection
     #
     # The VULNERABLE version builds the INSERT statement by pasting the
     # submitted title and body straight into the SQL string. A crafted

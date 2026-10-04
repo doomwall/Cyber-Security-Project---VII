@@ -49,20 +49,20 @@ def register_view(request):
         else:
             # --- SECURE version: enforce the password policy before the
             # --- account is created.
-            try:
-                validate_password(password)
-            except ValidationError as e:
-                errors.extend(e.messages)
+            #try:
+            #    validate_password(password)
+            #except ValidationError as e:
+            #    errors.extend(e.messages)
 
             # --- VULNERABLE version: no password policy is enforced, so
             # --- trivial passwords such as "1" are accepted.
-            #if not errors:
-            #    user = User.objects.create_user(
-            #        username=username,
-            #        password=password,
-            #    )
-            #    login(request, user)
-            #    return redirect('home')
+            if not errors:
+                user = User.objects.create_user(
+                    username=username,
+                    password=password,
+                )
+                login(request, user)
+                return redirect('home')
 
     return render(request, 'accounts/register.html', {'errors': errors})
 
