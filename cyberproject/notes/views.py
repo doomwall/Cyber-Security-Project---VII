@@ -16,8 +16,6 @@ def note_list(request):
 
 @login_required
 def note_detail(request, note_id):
-    """Show one note.
-
     ###################################################################
     # FLAW 1 -- Broken Access Control
     #           Insecure Direct Object Reference
@@ -30,7 +28,6 @@ def note_detail(request, note_id):
     # To repair the app: comment out the VULNERABLE line and uncomment
     # the SECURE line.
     ###################################################################
-    """
 
     # --- SECURE version: scope the lookup to the owner, so somebody
     # --- else's note does not exist as far as this view is concerned.
